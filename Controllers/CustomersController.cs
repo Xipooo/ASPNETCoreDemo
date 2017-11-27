@@ -1,16 +1,20 @@
 using System;
+using System.Collections.Generic;
 using ASPNETCoreDemo.Models;
 using Microsoft.AspNetCore.Mvc;
+using ASPNETCoreDemo.Repositories;
+using System.Linq;
 
 namespace ASPNETCoreDemo.Controllers
 {
     [Route("api/Customers")]
     public class CustomersController : Controller
     {
-        [HttpGet]
-        public Customer Get()
+        [HttpGet("{Id}")]
+        public Customer Get(int Id)
         {
-            Customer customer = new Customer();
+            List<Customer> customers = new CustomersRepository().GetAll();
+            Customer customer = customers.FirstOrDefault(cust => cust.Id == Id);
             return customer;
         }
 
