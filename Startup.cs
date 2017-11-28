@@ -7,13 +7,14 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.AspNetCore.Mvc.Formatters;
 
 namespace ASPNETCoreDemo
 {
     public class Startup
     {
 
-        public IConfiguration Configuration {get;}
+        public IConfiguration Configuration { get; }
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -22,7 +23,11 @@ namespace ASPNETCoreDemo
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc();
+            services.AddMvc(o =>
+            {
+                o.RespectBrowserAcceptHeader = true;
+                o.OutputFormatters.Add(new XmlSerializerOutputFormatter());
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -32,8 +37,15 @@ namespace ASPNETCoreDemo
             {
                 app.UseDeveloperExceptionPage();
             }
-            app.UseMvc();
+            app.UseStaticFiles();
             
+            app.UseMvc(
+                o =>
+                {
+                    o.MapRoute("Default", "{controller=Home}/{action=Index}/{Id?}");
+                }
+            );
+
         }
     }
 }

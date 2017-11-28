@@ -5,9 +5,10 @@ using Microsoft.AspNetCore.Mvc;
 using ASPNETCoreDemo.Repositories;
 using System.Linq;
 
+
 namespace ASPNETCoreDemo.Controllers
 {
-    [Route("api/Customers")]
+    [Route("api/[controller]")]
     public class CustomersController : Controller
     {
         [HttpGet("{Id}")]
