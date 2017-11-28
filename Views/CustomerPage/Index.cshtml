@@ -1,0 +1,19 @@
+@model ASPNETCoreDemo.Models.Customer
+
+<!Doctype html>
+<html>
+    <head>
+        <title>My Index Page</title>
+    </head>
+    <body>
+        <h1>This is my Index Page</h1>
+        @{
+            var myInt = Model.Id;
+            if (myInt == 2){
+                <p>You''ve been a bad boy!</p>
+            }
+        }
+        <p>@Model.FirstName</p>
+        <p>@Model.LastName</p>
+    </body>
+</html>

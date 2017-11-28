@@ -32,7 +32,13 @@ namespace ASPNETCoreDemo
             {
                 app.UseDeveloperExceptionPage();
             }
-            app.UseMvc();
+            app.UseMvc(options =>
+            {
+                options.MapRoute(
+                    "Default",
+                    "{controller=Home}/{action=Index}/{Id?}"
+                );
+            });
             
         }
     }
