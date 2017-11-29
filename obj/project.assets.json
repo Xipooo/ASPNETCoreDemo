@@ -12539,11 +12539,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Projects\\ASPNETCoreDemo\\ASPNETCoreDemo.csproj",
+      "projectUniqueName": "c:\\Projects\\ASPNETCoreDemo\\ASPNETCoreDemo.csproj",
       "projectName": "ASPNETCoreDemo",
-      "projectPath": "C:\\Projects\\ASPNETCoreDemo\\ASPNETCoreDemo.csproj",
+      "projectPath": "c:\\Projects\\ASPNETCoreDemo\\ASPNETCoreDemo.csproj",
       "packagesPath": "C:\\Users\\SBishop\\.nuget\\packages\\",
-      "outputPath": "C:\\Projects\\ASPNETCoreDemo\\obj\\",
+      "outputPath": "c:\\Projects\\ASPNETCoreDemo\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
