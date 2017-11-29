@@ -9,6 +9,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.Extensions.Logging;
+using Microsoft.EntityFrameworkCore;
+using ASPNETCoreDemo.Database;
 
 namespace ASPNETCoreDemo
 {
@@ -29,6 +31,11 @@ namespace ASPNETCoreDemo
                 o.RespectBrowserAcceptHeader = true;
                 o.OutputFormatters.Add(new XmlSerializerOutputFormatter());
             });
+
+            services.AddDbContext<DemoContext>(options => 
+                options.UseSqlServer(
+                    @"Server=localhost\SQLEXPRESS;Database=ASPCoreDemo;Trusted_Connection=True;")
+                );
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

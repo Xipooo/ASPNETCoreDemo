@@ -156,3 +156,80 @@ System.Exception: I Had an Error!
 2017-11-29T10:55:17.4966791-08:00 0HL9NBAT16B9O:00000001 [INF] Executing HttpStatusCodeResult, setting HTTP status code 400 (e28ccfae)
 2017-11-29T10:55:17.5044852-08:00 0HL9NBAT16B9O:00000001 [INF] Executed action "ASPNETCoreDemo.Controllers.CustomersController.Get (ASPNETCoreDemo)" in 212.256ms (afa2e885)
 2017-11-29T10:55:17.5848374-08:00 0HL9NBAT16B9O:00000001 [INF] Request finished in 2219.4232ms 400  (791a596a)
+2017-11-29T14:45:06.8028153-08:00  [INF] Entity Framework Core "2.0.1-rtm-125" initialized '"DemoContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2017-11-29T14:56:00.6686535-08:00  [INF] Entity Framework Core "2.0.1-rtm-125" initialized '"DemoContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2017-11-29T14:56:28.9001008-08:00  [INF] Executed DbCommand ("754"ms) [Parameters=[""], CommandType='Text', CommandTimeout='60']"
+""CREATE DATABASE [ASPCoreDemo];" (0723d8ff)
+2017-11-29T14:56:32.5506115-08:00  [INF] Executed DbCommand ("644"ms) [Parameters=[""], CommandType='Text', CommandTimeout='60']"
+""IF SERVERPROPERTY('EngineEdition') <> 5 EXEC(N'ALTER DATABASE [ASPCoreDemo] SET READ_COMMITTED_SNAPSHOT ON;');" (0723d8ff)
+2017-11-29T14:56:33.2665967-08:00  [INF] Executed DbCommand ("332"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [__EFMigrationsHistory] (
+    [MigrationId] nvarchar(150) NOT NULL,
+    [ProductVersion] nvarchar(32) NOT NULL,
+    CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
+);" (0723d8ff)
+2017-11-29T14:56:33.2992706-08:00  [INF] Executed DbCommand ("29"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT OBJECT_ID(N'__EFMigrationsHistory');" (0723d8ff)
+2017-11-29T14:56:33.6326369-08:00  [INF] Executed DbCommand ("330"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];" (0723d8ff)
+2017-11-29T14:56:33.6643048-08:00  [INF] Applying migration '"20171129224507_InitialMigration"'. (0e2ac64d)
+2017-11-29T14:56:33.9702001-08:00  [INF] Executed DbCommand ("34"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [Companies] (
+    [Id] int NOT NULL IDENTITY,
+    [CompanyName] nvarchar(max) NULL,
+    CONSTRAINT [PK_Companies] PRIMARY KEY ([Id])
+);" (0723d8ff)
+2017-11-29T14:56:34.0007487-08:00  [INF] Executed DbCommand ("30"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [Customers] (
+    [Id] int NOT NULL IDENTITY,
+    [CompanyId] int NOT NULL,
+    [FirstName] nvarchar(max) NULL,
+    [LastName] nvarchar(max) NULL,
+    CONSTRAINT [PK_Customers] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_Customers_Companies_CompanyId] FOREIGN KEY ([CompanyId]) REFERENCES [Companies] ([Id]) ON DELETE CASCADE
+);" (0723d8ff)
+2017-11-29T14:56:34.0538252-08:00  [INF] Executed DbCommand ("52"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_Customers_CompanyId] ON [Customers] ([CompanyId]);" (0723d8ff)
+2017-11-29T14:56:34.3560678-08:00  [INF] Executed DbCommand ("301"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20171129224507_InitialMigration', N'2.0.1-rtm-125');" (0723d8ff)
+2017-11-29T15:48:51.6624500-08:00  [INF] Entity Framework Core "2.0.1-rtm-125" initialized '"DemoContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2017-11-29T15:49:10.8730609-08:00  [INF] Executed DbCommand ("772"ms) [Parameters=[""], CommandType='Text', CommandTimeout='60']"
+""CREATE DATABASE [ASPCoreDemo];" (0723d8ff)
+2017-11-29T15:49:13.8348547-08:00  [INF] Executed DbCommand ("955"ms) [Parameters=[""], CommandType='Text', CommandTimeout='60']"
+""IF SERVERPROPERTY('EngineEdition') <> 5 EXEC(N'ALTER DATABASE [ASPCoreDemo] SET READ_COMMITTED_SNAPSHOT ON;');" (0723d8ff)
+2017-11-29T15:49:15.4415290-08:00  [INF] Executed DbCommand ("810"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [__EFMigrationsHistory] (
+    [MigrationId] nvarchar(150) NOT NULL,
+    [ProductVersion] nvarchar(32) NOT NULL,
+    CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
+);" (0723d8ff)
+2017-11-29T15:49:15.9341016-08:00  [INF] Executed DbCommand ("486"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT OBJECT_ID(N'__EFMigrationsHistory');" (0723d8ff)
+2017-11-29T15:49:16.1587644-08:00  [INF] Executed DbCommand ("220"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];" (0723d8ff)
+2017-11-29T15:49:16.1899066-08:00  [INF] Applying migration '"20171129224507_InitialMigration"'. (0e2ac64d)
+2017-11-29T15:49:17.0138273-08:00  [INF] Executed DbCommand ("169"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [Companies] (
+    [Id] int NOT NULL IDENTITY,
+    [CompanyName] nvarchar(max) NULL,
+    CONSTRAINT [PK_Companies] PRIMARY KEY ([Id])
+);" (0723d8ff)
+2017-11-29T15:49:17.0368756-08:00  [INF] Executed DbCommand ("22"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [Customers] (
+    [Id] int NOT NULL IDENTITY,
+    [CompanyId] int NOT NULL,
+    [FirstName] nvarchar(max) NULL,
+    [LastName] nvarchar(max) NULL,
+    CONSTRAINT [PK_Customers] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_Customers_Companies_CompanyId] FOREIGN KEY ([CompanyId]) REFERENCES [Companies] ([Id]) ON DELETE CASCADE
+);" (0723d8ff)
+2017-11-29T15:49:17.0776400-08:00  [INF] Executed DbCommand ("40"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_Customers_CompanyId] ON [Customers] ([CompanyId]);" (0723d8ff)
+2017-11-29T15:49:17.3908939-08:00  [INF] Executed DbCommand ("312"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20171129224507_InitialMigration', N'2.0.1-rtm-125');" (0723d8ff)
