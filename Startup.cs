@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Mvc.Formatters;
+using Microsoft.Extensions.Logging;
 
 namespace ASPNETCoreDemo
 {
@@ -31,25 +32,27 @@ namespace ASPNETCoreDemo
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
-            //if (env.IsDevelopment())
-            //{
+            if (env.IsDevelopment())
+            {
                 app.UseDeveloperExceptionPage();
-            //}
-            //else
-            //{
-                //app.UseExceptionHandler("/Error");
-            //}
-            app.UseStaticFiles();
+            }
+            else
+            {
+                app.UseExceptionHandler("/Error");
+            }
 
+            loggerFactory.AddFile("Logs/ASPCoreDemo-{Date}.txt");
+            loggerFactory.AddConsole();
+
+            app.UseStaticFiles();
             app.UseMvc(
                 o =>
                 {
                     o.MapRoute("Default", "{controller=Home}/{action=Index}/{Id?}");
                 }
             );
-
         }
     }
 }
